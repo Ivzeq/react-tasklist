@@ -7,14 +7,6 @@ function List({list}) {{
             {list.map(
                 mappedTask =>{{
                     return (
-                        /*<div>
-                             <p>
-                                {mappedTask.id} - {mappedTask.title}
-                                {mappedTask.completed === true ? 
-                                <input type="checkbox" checked="false"></input>:
-                                <input type="checkbox" checked="false"></input>}
-                            </p>
-                         </div>*/
                          <Task task={mappedTask}></Task>
                     )
                 }},
