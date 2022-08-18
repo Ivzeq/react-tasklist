@@ -8,8 +8,8 @@ function Task({task}) {{
                     {task.id} - {task.title}
     
                     {task.completed === true ? 
-                    <input type="checkbox" checked={true}></input>:
-                    <input type="checkbox" checked={false}></input>}
+                    <input onChange={() =>{}} type="checkbox" checked={true}></input>:
+                    <input onChange={() =>{}} type="checkbox" checked={false}></input>}
                 </p>
             </div> 
         </div>

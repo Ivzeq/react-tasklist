@@ -1,8 +1,8 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import DataService from "./DataService";
 import List from "./List";
 
-function Logic() {{
+function Logic() {
 
     const testData =
         {
@@ -11,14 +11,25 @@ function Logic() {{
           "completed": true
         }
 
-    const [taskList, setTaskList] = useState(DataService);
+    const [taskList, setTaskList] = useState([]);
+     
     
-    const addTask = ()=>{
-        setTaskList(
-            taskList.push(testData)
-        )
-        console.log(taskList)
+    
+    useEffect(
+        () =>{
+            DataService.getTasks()
+             .then((res)=>{
+                setTaskList(res)
+        })
+        }
+    )
+
+    const Handler = ()=>{
+        const testVariable = [...taskList, testData]
+        console.log("Test", testVariable)
+        setTaskList(testVariable)
     }
+
 
     return(
     <div className="App">
@@ -30,10 +41,11 @@ function Logic() {{
         <input></input>
         <input></input>
         </form>
-        <button onClick={addTask}>Add Task</button>
+        <button onClick={Handler}
+        >Add Task</button>
         <List list={taskList}></List>
     </div>
     )
-}}
+}
 
 export default Logic;

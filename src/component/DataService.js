@@ -1,7 +1,4 @@
-
-
-function DataService (){{
-    const data =
+const tasks =
         [
             {
               "id": 1,
@@ -21,16 +18,12 @@ function DataService (){{
               "completed": false
             }
         ];
-    /*let getTaskPromise = new Promise((resolve, reject) =>{
-        let a = 2
-        if (a==2){
-            resolve(DataService)
-        }else{
-            reject('Failed')
-        }
-    })*/
 
-    return data;
-}}
+
+const DataService = {
+  getTasks: function(){
+    return Promise.resolve(tasks)
+  }
+};
 
 export default DataService;

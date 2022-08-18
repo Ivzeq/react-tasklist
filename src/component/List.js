@@ -7,7 +7,7 @@ function List({list}) {{
             {list.map(
                 mappedTask =>{{
                     return (
-                         <Task task={mappedTask}></Task>
+                         <Task key= {mappedTask.id} task={mappedTask}></Task>
                     )
                 }},
                 
