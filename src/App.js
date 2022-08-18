@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Logic from "./component/Logic";
+import Tasks from "./component/Tasks";
 
 
 function App() {
   
   return(
     <div>
-    <Logic></Logic>
+    <Tasks></Tasks>
     </div>
   )
 }

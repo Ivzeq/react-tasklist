@@ -1,7 +1,8 @@
 import React from "react";
 import Task from "./Task";
 
-function List({list}) {{
+export default function TaskList({list}) {{
+    console.log(list)
     return (
         <div>
             {list.map(
@@ -15,5 +16,3 @@ function List({list}) {{
         </div>
     );
 }}
-
-export default List;
