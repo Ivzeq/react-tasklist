@@ -6,42 +6,31 @@ export default function Tasks() {
 
     //Declare useState
     const [taskList, setTaskList] = useState([]);
-     
+    const [fetchStatus, setFetchStatus] = useState('pending');
+    const [fetchError, setFetchError] = useState(null);
+    const [taskTitle, setTaskTitle] = useState('');
+
     //Set state to inital data
     useEffect(() =>{
+        setFetchStatus('inProgress')
         DataService.getTasks()
             .then((res)=>{
-                DataService.lastId = 3;
                 setTaskList(res)
+            })
+            .catch((error)=>{
+                setFetchError(error.message)
+            })
+            .finally(()=>{
+                setFetchStatus('completed')
             })
     },[])
 
     //Set to new array that includes the extra task
-    const taskHandler = ()=>{
-        DataService.getNewTask()
-            .then((res)=>{
-                const newPromisedTask= res
-                
-                const finalArray = [...taskList, newPromisedTask]
-                
-                setTaskList(finalArray)
-                DataService.lastId = finalArray[finalArray.length-1].id
-            })
-            .catch((res)=>{
-                const newPromisedTask = res
-
-                newPromisedTask.id = DataService.lastId + 1
-                newPromisedTask.completed = false
-
-                
-                const finalArray = [...taskList, newPromisedTask]
-                
-
-                setTaskList(finalArray)
-                DataService.lastId = finalArray[finalArray.length-1].id
-            })
-            .finally(()=>{
-                
+    const taskHandler = (e)=>{
+        e.preventDefault()
+        DataService.addNewTask(
+            {
+            "title": taskTitle
             })
     }
 
@@ -53,14 +42,13 @@ export default function Tasks() {
             </header>
             
             <form>
-            <input></input>
-            <input></input>
-            <input></input>
+            <input type='text' placeholder="Descripcion de la tarea" onChange={(e)=>setTaskTitle(e.target.value)}></input>
+            <button onClick={taskHandler}>Add Task</button>
             </form>
 
-            <button onClick={taskHandler}>Add Task</button>
-
-            <TaskList list={taskList}></TaskList>
+            {fetchStatus==='inProgress' && <p>In progress</p>}
+            {fetchStatus === 'completed' && fetchError && <p>{fetchError}</p>}
+            {!fetchError && fetchStatus === 'completed' && <TaskList list={taskList}></TaskList>}
         </div>
     )
 }

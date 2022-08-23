@@ -19,10 +19,3 @@ export const tasks =
         }
     ];
 
-export const newTask =
-    {
-      "id": 4,
-      "title": "Fourth Task",
-      "completed": true
-    }
-
