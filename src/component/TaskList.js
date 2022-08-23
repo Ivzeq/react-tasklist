@@ -2,7 +2,6 @@ import React from "react";
 import Task from "./Task";
 
 export default function TaskList({list}) {{
-    console.log(list)
     return (
         <div>
             {list.map(
