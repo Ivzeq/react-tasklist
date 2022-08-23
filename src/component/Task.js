@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({task}) {{
+export default function Task({task}) {{
     return(
         <div>
             <div>
@@ -15,5 +15,3 @@ function Task({task}) {{
         </div>
     )
 }}
-
-export default Task;
