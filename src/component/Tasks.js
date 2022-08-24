@@ -21,16 +21,23 @@ export default function Tasks() {
                 setFetchError(error.message)
             })
             .finally(()=>{
-                setFetchStatus('completed')
+                setTimeout(()=>{setFetchStatus('completed')}, 1000 )
             })
     },[])
 
     //Set to new array that includes the extra task
     const taskHandler = (e)=>{
         e.preventDefault()
-        DataService.addNewTask(
-            {
-            "title": taskTitle
+        setFetchStatus('inProgress')
+        DataService.addNewTask({"title": taskTitle},taskList)
+            .then((res)=>{
+                setTaskList(res)
+            })
+            .catch((error)=>{
+                setFetchError(error.message)
+            })
+            .finally(()=>{
+                setTimeout(()=>{setFetchStatus('completed')}, 1000 )
             })
     }
 

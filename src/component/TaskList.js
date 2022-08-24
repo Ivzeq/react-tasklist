@@ -3,7 +3,7 @@ import Task from "./Task";
 
 export default function TaskList({list}) {{
     return (
-        <div>
+        <ul>
             {list.map(
                 mappedTask =>{{
                     return (
@@ -12,6 +12,6 @@ export default function TaskList({list}) {{
                 }},
                 
             )}
-        </div>
+        </ul>
     );
 }}

@@ -3,7 +3,7 @@ import React from "react";
 export default function Task({task}) {{
     return(
         <div>
-            <div>
+            <li>
                 <p>
                     {task.id} - {task.title}
     
@@ -11,7 +11,7 @@ export default function Task({task}) {{
                     <input onChange={() =>{}} type="checkbox" checked={true}></input>:
                     <input onChange={() =>{}} type="checkbox" checked={false}></input>}
                 </p>
-            </div> 
+            </li> 
         </div>
     )
 }}

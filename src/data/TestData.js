@@ -9,13 +9,13 @@ export const tasks =
         {
           "id": 2,
           "title": "Second Task",
-          "completed": true
+          "completed": false
         },
     
         {
           "id": 3,
           "title": "Third Task",
-          "completed": false
+          "completed": true
         }
     ];
 
