@@ -1,19 +1,17 @@
 import React from "react";
 
-function Task({task}) {{
+export default function Task({task}) {{
     return(
         <div>
-            <div>
+            <li>
                 <p>
                     {task.id} - {task.title}
     
                     {task.completed === true ? 
-                    <input type="checkbox" checked={true}></input>:
-                    <input type="checkbox" checked={false}></input>}
+                    <input onChange={() =>{}} type="checkbox" checked={true}></input>:
+                    <input onChange={() =>{}} type="checkbox" checked={false}></input>}
                 </p>
-            </div> 
+            </li> 
         </div>
     )
 }}
-
-export default Task;
